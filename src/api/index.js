@@ -1,6 +1,7 @@
 const app = require('./config/express');
 const configs = require('./config');
-const database = require('./config/database');
+// start Database Connection
+require('./config/database');
 
 const { port } = configs.server;
 app.set('port', port);

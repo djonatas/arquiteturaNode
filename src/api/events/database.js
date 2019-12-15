@@ -1,16 +1,18 @@
-const { database } = require('../config');
-
 class databaseEvents {
+    constructor(database) {
+        this.database = database;
+    }
+
     connect() {
-        console.log(`Connect in - ${database.name}`);
+        console.log(`Connect in - ${this.database.name}`);
     }
 
     error(error) {
-        console.log(`Unable to connect - ${database.name} - ${error}`);
+        console.log(`Unable to connect - ${this.database.name} - ${error}`);
     }
 
     disconectd() {
-        console.log(`Database ${database.name} disconected`);
+        console.log(`Database ${this.database.name} disconected`);
     }
 }
 

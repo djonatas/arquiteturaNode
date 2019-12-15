@@ -1,6 +1,6 @@
 const winston = require('winston');
 
-const winstonLogger = winston.createLogger({
+const wLogger = winston.createLogger({
     transports: [
         new winston.transports.Console({ handleExceptions: true })
     ],
@@ -10,18 +10,26 @@ const winstonLogger = winston.createLogger({
     )
 });
 
-const logger = (local) => {
-    function buildLog (type){
-        console.log(`${local} - ${type} - Message`);
+class logger {
+    constructor(local){
+        this.local = local;
     }
 
-    return {
-        info: buildLog('info'),
-        warn: buildLog('warn'),
-        error: buildLog('error'),
-        debug: buildLog('debug'),
-        fatal: buildLog('fatal'),
-        trace: buildLog('trace')
-    };
-};
+    info(message) {
+        wLogger.info(`[INFO] - ${this.local} - ${message}`);
+    }
 
+    debug(message) {
+        wLogger.debug(`[DEBUG] - ${this.local} - ${message}`);
+    }
+
+    warning(message) {
+        wLogger.warn(`[WARN] - ${this.local} - ${message}`);
+    }
+
+    error(message) {
+        wLogger.error(`[ERROR] - ${this.local} - ${message}`);
+    }
+}
+
+module.exports = logger;
