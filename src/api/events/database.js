@@ -1,22 +1,16 @@
-const configs = require('../config');
-//const logger  = require('../../factory/logger');
+const { database } = require('../config');
 
 class databaseEvents {
-    let path;
-    constructor(path){
-        this.path = path;
+    connect() {
+        console.log(`Connect in - ${database.name}`);
     }
 
-    connect(){
-        console.log(`Connect in - ${this.path}`);
-    }
-
-    error(error){
-        console.log(`Unable to connect - ${this.path} - ${error}`);
+    error(error) {
+        console.log(`Unable to connect - ${database.name} - ${error}`);
     }
 
     disconectd() {
-        console.log(`Database ${this.path} disconected`);
+        console.log(`Database ${database.name} disconected`);
     }
 }
 

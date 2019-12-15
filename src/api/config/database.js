@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const { database } = require('../config');
 const DatabaseEvents = require('../events/database');
+
 const events = new DatabaseEvents(database.name);
+
+console.log('database');
 
 mongoose.Promise = require('bluebird');
 

@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 app.use('/user', userRoutes);
-app.use('/cashIn', cashIn);
-app.use('/cashOut', cashOut);
+//app.use('/cashIn', cashIn);
+//app.use('/cashOut', cashOut);
 
 module.exports = app;
