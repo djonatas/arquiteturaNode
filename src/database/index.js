@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-const { database } = require('../config');
-const DatabaseEvents = require('../events/database');
+const { database } = require('../api/config');
+const DatabaseEvents = require('./events');
 
-const events = new DatabaseEvents(database);
+const events = new DatabaseEvents();
 mongoose.connect(database.connectionString, database.options);
 
 const db = mongoose.connection;

@@ -16,19 +16,19 @@ class logger {
     }
 
     info(message) {
-        wLogger.info(`[INFO] - ${this.local} - ${message}`);
+        wLogger.info(`${this.local}: ${message}`);
     }
 
     debug(message) {
-        wLogger.debug(`[DEBUG] - ${this.local} - ${message}`);
+        wLogger.debug(`${this.local}: ${message}`);
     }
 
     warning(message) {
-        wLogger.warn(`[WARN] - ${this.local} - ${message}`);
+        wLogger.warn(`${this.local}: ${message}`);
     }
 
     error(message) {
-        wLogger.error(`[ERROR] - ${this.local} - ${message}`);
+        wLogger.error(`${this.local} - ${message}`);
     }
 }
 

@@ -6,12 +6,8 @@ const cors = require('cors');
 const app = express();
 
 
-/*
-require('./models/transaction-model');
-require('./models/customer-model');
-require('./models/token-model');
-require('./models/subAccount-model');
- */
+
+require('../../models/transaction');
 
 // Load Routes
 const userRoutes = require('../routes/user');
@@ -29,7 +25,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 app.use('/user', userRoutes);
-//app.use('/cashIn', cashIn);
+app.use('/cashIn', cashIn);
 //app.use('/cashOut', cashOut);
 
 module.exports = app;

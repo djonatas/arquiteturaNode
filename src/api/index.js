@@ -1,11 +1,14 @@
-const app = require('./config/express');
+const apiServer = require('./config/server');
 const configs = require('./config');
+const Logger = require('../factory/logger');
 // start Database Connection
-require('./config/database');
+require('../database');
+
+const log = new Logger('StartServer');
 
 const { port } = configs.server;
-app.set('port', port);
+apiServer.set('port', port);
 
-app.listen(port, () => {
-    console.log(`Express server listening on port ${port}`);
+apiServer.listen(port, () => {
+    log.info(`Server listening on port ${port}`);
 });
