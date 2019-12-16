@@ -4,7 +4,7 @@ const Logger = require('../../factory/logger');
 
 const log = new Logger('Payment');
 
-class payment {
+class Payment {
     constructor(data){
         if (!data.method) {
             return;
@@ -40,4 +40,4 @@ class payment {
     }
 }
 
-module.exports = payment;
+module.exports = Payment;

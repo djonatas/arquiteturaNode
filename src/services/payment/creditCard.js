@@ -2,7 +2,7 @@ const Logger = require('../../factory/logger');
 
 const log = new Logger('DatabaseEvents');
 
-class creditCard {
+class CreditCard {
     processPayment() {
         log.info('Pagamento de cartao de crédito processado');
     }
@@ -12,4 +12,4 @@ class creditCard {
     }
 }
 
-module.exports = creditCard;
+module.exports = CreditCard;

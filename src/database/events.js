@@ -2,7 +2,7 @@ const Logger = require('../factory/logger');
 
 const log = new Logger('DatabaseEvents');
 
-class databaseEvents {
+class DatabaseEvents {
     connect() {
         log.info(`Connect in - ${this.name}`);
     }
@@ -16,4 +16,4 @@ class databaseEvents {
     }
 }
 
-module.exports = databaseEvents;
+module.exports = DatabaseEvents;

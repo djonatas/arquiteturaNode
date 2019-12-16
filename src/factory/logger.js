@@ -10,7 +10,7 @@ const wLogger = winston.createLogger({
     )
 });
 
-class logger {
+class Logger {
     constructor(local){
         this.local = local;
     }
@@ -32,4 +32,4 @@ class logger {
     }
 }
 
-module.exports = logger;
+module.exports = Logger;

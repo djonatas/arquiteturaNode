@@ -3,7 +3,7 @@ const { lockCard } = require('../proxy/proxy');
 
 const log = new Logger('DatabaseEvents');
 
-class debitCard {
+class DebitCard {
     constructor(data) {
         this.data = data;
     }
@@ -19,4 +19,4 @@ class debitCard {
     }
 }
 
-module.exports = debitCard;
+module.exports = DebitCard;
