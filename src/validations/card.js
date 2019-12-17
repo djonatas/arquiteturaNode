@@ -1,3 +1,4 @@
+
 class card {
     constructor(validator) {
         this.validator = validator;
@@ -22,16 +23,23 @@ class card {
         if (cardData.validate) {
             this.validator.hasMinLen(cardData.validate,7,'The attribute "card.validate" is invalid value, ex: 06/2001');
 
-            if (cardData.validate.length === 7){
+            if (cardData.validate.length === 7) {
                 const split = cardData.validate.split('/');
-                const month = parseInt(split[0], 0);
-                const year = parseInt(split[1], 0);
-                const currentDate = new Date();
+                if (!/^\d+$/.test(split[0]) || !/^\d+$/.test(split[1])) {
+                    this.validator.addError('Invalid date or expiration date "card.validate"');
+                } else {
+                    const month = parseInt(split[0], 0);
+                    if (month > 12 || month < 1) {
+                        this.validator.addError('Invalid date or expiration date "card.validate"');
+                    }
+                    const year = parseInt(split[1], 0);
+                    const currentDate = new Date();
 
-                if (year < currentDate.getFullYear()) {
-                    this.validator.addError('Invalid date or expiration date "card.validate"');
-                } else if (year === currentDate.getFullYear() && month < (currentDate.getMonth() + 1)) {
-                    this.validator.addError('Invalid date or expiration date "card.validate"');
+                    if (year < currentDate.getFullYear()) {
+                        this.validator.addError('Invalid date or expiration date "card.validate"');
+                    } else if (year === currentDate.getFullYear() && month < (currentDate.getMonth() + 1)) {
+                        this.validator.addError('Invalid date or expiration date "card.validate"');
+                    }
                 }
             }
         }
