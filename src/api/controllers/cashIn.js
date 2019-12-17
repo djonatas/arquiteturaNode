@@ -2,7 +2,7 @@ const Validation = require('../../factory/validation');
 const Card = require('../../validations/card');
 const Payment = require('../../services/payment');
 
-class cashInController {
+class CashInController {
     async pay(req, res) {
         const validator = new Validation();
         const card = new Card(validator);
@@ -47,4 +47,4 @@ class cashInController {
     }
 }
 
-module.exports = cashInController;
+module.exports = CashInController;

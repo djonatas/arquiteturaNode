@@ -12,8 +12,8 @@ const config = {
     },
     test: {
         database: {
-            connectionString: process.env.DatabasePath || 'mongodb+srv://userapp:IZj9Y1uNnPV5JuPU@cluster0-6cbyb.mongodb.net/pagarme?retryWrites=true&w=majority',
-            options: { useNewUrlParser: true, useUnifiedTopology: true }
+            connectionString: 'mongodb://localhost:27017',
+            options: {}
         },
         server: {
             port: 3000
@@ -39,5 +39,4 @@ const config = {
     }
 };
 
-console.log(env);
 module.exports = config[env];

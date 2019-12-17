@@ -1,11 +1,14 @@
 {
   "name": "pagar-me",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "POC Pagarme",
+  "main": "./src/api/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/api"
+    "pretest": "docker-compose up -d",
+    "test": "NODE_ENV=test mocha --exit test/**",
+    "posttest": "docker-compose down",
+    "start": "node ./src/api",
+    "coverage": "nyc npm run test"
   },
   "repository": {
     "type": "git",
@@ -28,11 +31,15 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^6.7.2",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.17.0"
+    "eslint-plugin-react": "^7.17.0",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
+    "supertest": "^4.0.2"
   }
 }

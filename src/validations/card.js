@@ -1,5 +1,5 @@
 
-class card {
+class Card {
     constructor(validator) {
         this.validator = validator;
     }
@@ -46,4 +46,4 @@ class card {
     }
 }
 
-module.exports = card;
+module.exports = Card;

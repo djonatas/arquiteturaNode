@@ -1,4 +1,4 @@
-const Debid = require('./debitCard');
+const Debit = require('./debitCard');
 const Credit = require('./creditCard');
 const Logger = require('../../factory/logger');
 const Database = require('../../factory/database');
@@ -14,10 +14,10 @@ class Payment {
         this.generateTransactionId();
 
         if (this.data.paymentMethod === 'debit_card') {
-            this.processor = new Debid(data, Database);
+            this.processor = new Debit(Database);
         } else
         if (this.data.paymentMethod === 'credit_card') {
-            this.processor = new Credit(data, Database);
+            this.processor = new Credit(Database);
         } else {
             log.error('Invalid payment method');
         }
@@ -29,7 +29,7 @@ class Payment {
         }
         log.info(`processing transaction ${this.data.transactionId}`);
 
-        const payment = await this.processor.processPayment(this.data);
+        const payment = await this.processor.processTransaction(this.data);
         await this.processor.processPayable(this.data);
         return payment;
     }

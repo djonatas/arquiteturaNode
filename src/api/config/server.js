@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const Token = require('../service/token');
 
+// start Database Connection
+require('../../database');
+
 const app = express();
 
 app.use(async (req, res, next) => {
