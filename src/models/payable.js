@@ -43,6 +43,10 @@ const schema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    finalValue: {
+        type: Number,
+        required: true
+    },
     payment_date: {
         type: Number,
         required: true

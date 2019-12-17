@@ -29,6 +29,7 @@ class Logger {
 
     error(message) {
         wLogger.error(`${this.local} - ${message}`);
+        throw new Error(message);
     }
 }
 

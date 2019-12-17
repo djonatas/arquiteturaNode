@@ -1,10 +1,10 @@
 const express = require('express');
 
 const router = express.Router();
-const Controller = require('../controllers/cashIn');
+const Controller = require('../controllers/reports');
 
 const controller = new Controller();
 
-router.post('/', controller.pay);
+router.get('/available', controller.availableResource);
 
 module.exports = router;

@@ -5,19 +5,15 @@ const cors = require('cors');
 
 const app = express();
 
-
-
-require('../../models/transaction');
-
 // Load Routes
 const userRoutes = require('../routes/user');
-
 const cashIn = require('../routes/cashIn');
-const cashOut = require('../routes/cashOut');
+const reports = require('../routes/reports');
 
 app.use(bodyParser.json({
     limit: '5mb'
 }));
+
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -26,6 +22,6 @@ app.use(cors());
 
 app.use('/user', userRoutes);
 app.use('/cashIn', cashIn);
-//app.use('/cashOut', cashOut);
+app.use('/reports', reports);
 
 module.exports = app;

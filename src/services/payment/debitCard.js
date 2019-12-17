@@ -30,10 +30,11 @@ class DebitCard {
                 value: transaction.value,
                 paymentMethod: transaction.paymentMethod
             },
-            status: 'waiting_funds',
+            status: 'paid',
             originalValue: transaction.value,
             fee: 3,
             feeCost: feeCost,
+            finalValue: transaction.value - feeCost,
             payment_date: paymentDate
         };
 

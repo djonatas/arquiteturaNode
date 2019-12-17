@@ -29,10 +29,11 @@ class CreditCard {
                 value: transaction.value,
                 paymentMethod: transaction.paymentMethod
             },
-            status: 'paid',
+            status: 'waiting_funds',
             originalValue: transaction.value,
             fee: 5,
             feeCost: feeCost,
+            finalValue: transaction.value - feeCost,
             payment_date: paymentDate
         };
 
