@@ -12,13 +12,14 @@ class CreditCard {
         this.payable = new Database(payableModel);
     }
 
-    processPayment(data) {
+    async processPayment(data) {
         this.data.card.number = lockCard(this.data.card.number);
-        this.transaction.save(data);
+        await this.transaction.save(data);
         log.info('Credit card payment processed');
+        return this.data;
     }
 
-    processPayable(transaction) {
+    async processPayable(transaction) {
         const fee = 0.05;
         const feeCost = transaction.value * fee;
         const paymentDate = new Date();
@@ -39,7 +40,7 @@ class CreditCard {
 
         log.info('Payable credit calc processed');
 
-        this.payable.save(payable);
+        await this.payable.save(payable);
     }
 }
 

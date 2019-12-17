@@ -1,13 +1,9 @@
 const Validation = require('../../factory/validation');
 const Card = require('../../validations/card');
 const Payment = require('../../services/payment');
-const Database = require('../../factory/database');
-const TransactionRepository = require('../../repositories/transaction');
-
-const transactionRepository = new TransactionRepository(Database);
 
 class cashInController {
-    pay(req, res) {
+    async pay(req, res) {
         const validator = new Validation();
         const card = new Card(validator);
         const { body } = req;
@@ -35,20 +31,19 @@ class cashInController {
         }
 
         const payment = new Payment(body);
-        payment.pay();
+        const response = await payment.pay();
 
-        res.status(201).send({
-            success: true
-        });
-    }
-
-    async getMine(req, res){
-        const data = await transactionRepository.getByCustomer();
-
-        res.status(201).send({
-            ok: true,
-            data: data
-        });
+        try {
+            res.status(201).send({
+                success: true,
+                data: response
+            });
+        } catch (ex) {
+            res.status(400).send({
+                success: true,
+                error: ex
+            });
+        }
     }
 }
 

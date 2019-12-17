@@ -3,7 +3,7 @@ const PayableRepository = require('../../repositories/payable');
 
 const payableRepository = new PayableRepository(Database);
 
-class reportsController {
+class ReportsController {
     async availableResource(req, res) {
         try {
             const details = req.query.details ? JSON.parse(req.query.details) : false;
@@ -18,8 +18,7 @@ class reportsController {
                 error: ex.message
             });
         }
-
     }
 }
 
-module.exports = reportsController;
+module.exports = ReportsController;

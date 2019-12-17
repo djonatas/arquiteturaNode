@@ -14,6 +14,7 @@
     "no-use-before-define": ["error", { "functions": false, "classes": true }],
     "no-console": "off",
     "object-shorthand": ["error", "never"],
-    "arrow-body-style": ["error", "never"]
+    "arrow-body-style": ["error", "never"],
+    "max-len": [2, {"code": 150, "tabWidth": 4, "ignoreUrls": true}]
   }
 }

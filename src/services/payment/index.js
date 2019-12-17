@@ -23,20 +23,19 @@ class Payment {
         }
     }
 
-    pay() {
+    async pay() {
         if (!this.processor) {
             log.error('No instance for object processor - Invalid payment method');
         }
         log.info(`processing transaction ${this.data.transactionId}`);
 
-        // ToDo: Falta fazer o controle transacional
-        const payment = this.processor.processPayment(this.data);
-        this.processor.processPayable(this.data);
+        const payment = await this.processor.processPayment(this.data);
+        await this.processor.processPayable(this.data);
         return payment;
     }
 
     generateTransactionId() {
-        this.data.transactionId = '22111';
+        this.data.transactionId = Math.round(new Date().getTime() / 1000);
     }
 }
 

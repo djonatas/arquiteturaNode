@@ -21,7 +21,19 @@ class card {
         this.validator.isRequired(cardData.validate, 'The attribute "card.validate" is required');
         if (cardData.validate) {
             this.validator.hasMinLen(cardData.validate,7,'The attribute "card.validate" is invalid value, ex: 06/2001');
-            // TODO: validar se é mes e ano validos
+
+            if (cardData.validate.length === 7){
+                const split = cardData.validate.split('/');
+                const month = parseInt(split[0], 0);
+                const year = parseInt(split[1], 0);
+                const currentDate = new Date();
+
+                if (year < currentDate.getFullYear()) {
+                    this.validator.addError('Invalid date or expiration date "card.validate"');
+                } else if (year === currentDate.getFullYear() && month < (currentDate.getMonth() + 1)) {
+                    this.validator.addError('Invalid date or expiration date "card.validate"');
+                }
+            }
         }
     }
 }

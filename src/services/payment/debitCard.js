@@ -12,13 +12,13 @@ class DebitCard {
         this.payable = new Database(payableModel);
     }
 
-    processPayment() {
+    async processPayment() {
         this.data.card.number = lockCard(this.data.card.number);
-        this.transaction.save(this.data);
+        await this.transaction.save(this.data);
         log.info('Debit card payment processed');
     }
 
-    processPayable(transaction) {
+    async processPayable(transaction) {
         const fee = 0.03;
         const feeCost = transaction.value * fee;
         const paymentDate = new Date();
@@ -40,7 +40,7 @@ class DebitCard {
 
         log.info('Payable debit calc processed');
 
-        this.payable.save(payable);
+        await this.payable.save(payable);
     }
 }
 
