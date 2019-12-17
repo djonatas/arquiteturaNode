@@ -2,20 +2,17 @@ const Logger = require('../../factory/logger');
 
 const log = new Logger();
 
-const lockCard = (obj) => {
-
-    if (!obj.number) {
+const lockCard = (number) => {
+    if (!number) {
         log.error('Invalid credit card number');
+        return;
     }
-
-    let strLenght = obj.number.toString().length;
+    const strLenght = number.toString().length;
     let criptNumber = '';
-
     for (let i = 0; i < strLenght; i++) {
-        criptNumber += ( i < (strLenght-4) && obj.number[i] !== '.') ? 'X' : obj.number[i];
+        criptNumber += (i < (strLenght-4) && number[i] !== '.') ? 'X' : number[i];
     }
-
-    obj.number = criptNumber;
+    return criptNumber;
 };
 
 module.exports = { lockCard };

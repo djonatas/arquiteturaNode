@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
     customer: {
-        obId: { type: mongoose.Types.ObjectId },
+        customerId: { type: mongoose.Types.ObjectId },
         name: { type: String }
     },
     at: {
@@ -26,22 +26,22 @@ const schema = new mongoose.Schema({
         enum: ['debit_card', 'credit_card']
     },
     value:{
-        type: String
+        type: Number
     },
     card:{
         number: {
             type: String,
             required: true
         },
-        name:{
+        holderName: {
             type: String,
             required: true
         },
-        validate:{
-            type: Date,
+        validate: {
+            type: String,
             required: true
         },
-        cvv:{
+        cvv: {
             type: Number,
             required: true
         }

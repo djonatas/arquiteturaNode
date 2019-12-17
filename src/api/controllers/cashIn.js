@@ -1,6 +1,10 @@
 const Validation = require('../../factory/validation');
 const Card = require('../../validations/card');
 const Payment = require('../../services/payment');
+const Database = require('../../factory/database');
+const TransactionRepository = require('../../repositories/transaction');
+
+const transactionRepository = new TransactionRepository(Database);
 
 class cashInController {
     pay(req, res) {
@@ -11,7 +15,7 @@ class cashInController {
         validator.isRequired(body.description, 'The attribute "description" is required');
         validator.isRequired(body.value, 'The attribute "value" is required');
         validator.isRequired(body.card, 'The attribute "card" is required');
-        validator.isRequired(body.method, 'The attribute "method" is required');
+        validator.isRequired(body.paymentMethod, 'The attribute "paymentMethod" is required');
 
         if (body.method) {
             validator.isValidValue(body.method, ['debit_card', 'credit_card'], 'Invalid payment method. Ex: debit_card or credit_card');
@@ -34,7 +38,16 @@ class cashInController {
         payment.pay();
 
         res.status(201).send({
-            ok: 'pay'
+            success: true
+        });
+    }
+
+    async getMine(req, res){
+        const data = await transactionRepository.getByCustomer();
+
+        res.status(201).send({
+            ok: true,
+            data: data
         });
     }
 }

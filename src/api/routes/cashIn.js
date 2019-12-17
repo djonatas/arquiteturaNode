@@ -7,4 +7,6 @@ const controller = new Controller();
 
 router.post('/pay', controller.pay);
 
+router.get('/transactions', controller.getMine);
+
 module.exports = router;
