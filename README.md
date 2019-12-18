@@ -1,4 +1,4 @@
-# Desafio Software Engineer, Back-end - Pagar.me
+# Desafio de arquitetura em Node
 
 ## Tecnologia e Frameworks
 
