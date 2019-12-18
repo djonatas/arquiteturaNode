@@ -4,7 +4,7 @@
 
 - [Tecnologia e Frameworks](#Tecnologia e Frameworks)
 - [Instalação](#Instalação)
-- [Executar os testes](#Executar_Testes)
+- [Executar os testes](#Executar Testes)
 
 - [Rodar Aplicacao](#Rodar Aplicação)
 
