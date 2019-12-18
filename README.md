@@ -2,12 +2,13 @@
 
 ## Conteúdo
 
-- [Tecnologia e Frameworks](#tecnologia)
+- [Tecnologia e Frameworks](#Tecnologia e Frameworks)
 - [Instalação](#Instalação)
-- [Executar os testes](#excutar-testes)
+- [Executar os testes](#Executar Testes)
 
-- [Rodar Aplicacao](#running-application)
-    - [Running Application](#running-application)
+- [Rodar Aplicacao](#Rodar Aplicação)
+
+- [Uso da API](#Uso da API)
 
 ## Tecnologia e Frameworks
 
@@ -29,14 +30,14 @@ Tecnologias e Frameworks utiliza
 $ npm install
 ```
 
-### Executar Testes
+## Executar Testes
 
 1. **Para rodar os testes use:**
 ```sh
 $ npm run test
 ```
 
-### Rodar Aplicação
+## Rodar Aplicação
 
 1. **Para rodar a aplicação use:**
 ```sh
