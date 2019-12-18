@@ -33,8 +33,16 @@ describe('CashIn', () => {
             .send(payload)
             .expect(400)
             .then(response => {
+                console.log(response);
                 expect(response.body).to.be.deep.equal(
-                    [{ message: 'Invalid date or expiration date "card.validate"' }]
+                    {
+                        success: false,
+                        errors: [
+                            {
+                                message: 'Invalid date or expiration date "card.validate"'
+                            }
+                        ]
+                    }
                 )
             })
     });

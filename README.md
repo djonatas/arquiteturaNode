@@ -1,15 +1,5 @@
 # Desafio Software Engineer, Back-end - Pagar.me
 
-## Conteúdo
-
-- [Tecnologia e Frameworks](#Tecnologia e Frameworks)
-- [Instalação](#Instalação)
-- [Executar os testes](#Executar Testes)
-
-- [Rodar Aplicacao](#Rodar Aplicação)
-
-- [Uso da API](#Uso da API)
-
 ## Tecnologia e Frameworks
 
 Tecnologias e Frameworks utiliza
@@ -23,6 +13,14 @@ Tecnologias e Frameworks utiliza
 - **[Mocha](https://mochajs.org/)** Teste Unitários e integração.
 - **[Coverage](https://github.com/shinnn/coverage)** Cobertura de testes.
 
+
+## Verões de desenvolvimento
+
+- **Node:** v10.10.0
+- **Npm:** v6.13.4
+- **Docker:** v2.1.0.5(40693)
+- **Docker Compose:** v1.24.1, build 4667896b
+- **Mongo:** v4.0.0
 
 ## Instalação
 1. **Para instalar as dependências use:**
@@ -56,6 +54,7 @@ Authorizarion - ABC1234ZWE
 
 1. **Pagamento use:**
 ```sh
+[POST]
 $/cashIn
 ```
 
@@ -81,3 +80,74 @@ body:
     - **holderName:** Nome do proprietário do cartão.
     - **cvv:** Número de segurança do cartão.
     - **validate:** Validade do cartão.
+    
+ Response:
+  ```sh
+STATUS 201
+ {
+     "success": true,
+     "data": {
+         "description": "Compra 0001",
+         "value": 10000,
+         "paymentMethod": "debit_card",
+         "card": {
+             "number": "XXXX.XXXX.XXXX.9999",
+             "holderName": "João da Silva",
+             "cvv": 999,
+             "validate": "12/2020"
+         },
+         "transactionId": 1576631186
+     }
+ }
+  ```
+
+Semelhante ao dado postado, mas com o success true e "transactionId" para fazer o controle da transação.
+
+Em caso de inconformidade de dados :
+ ```sh
+STATUS 400
+ {
+     "success": false,
+     "errors": [
+         {
+             "message": "The attribute \"card.number\" is invalid"
+         }
+     ]
+ }
+  ```
+Um array de mensagens de inconformidade será apresentado na propriedade errors. 
+    
+    
+ 2. **Retornar fundos use:**
+ ```sh
+[GET]
+ $/reports/available
+ ```
+
+Response:
+  ```sh
+STATUS 200
+ {
+     "success": true,
+     "data": {
+         "avaliable": {
+             "value": 116000,
+             "details": []
+         },
+         "waitingFunds": {
+             "value": 142900,
+             "details": []
+         }
+     }
+ }
+  ```
+
+- **success:** Demonstrando que a requisição ocorreu com sucesso
+- **data:**
+    - **avaliable:** Recursos Disponíveis para saque
+        - **value:** valor disponível
+        - **details:** caso o request tenha a variação de "?details=true" no final os detalhes das transações serão apresentados
+   - **waitingFunds:** Recursos ainda não disponibilizados para saque
+        - **value:** valor disponível
+        - **details:** caso o request tenha a variação de "?details=true" no final os detalhes das transações serão apresentados
+        

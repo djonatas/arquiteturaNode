@@ -26,7 +26,10 @@ class CashInController {
         }
 
         if (!validator.isValid()) {
-            res.status(400).send(validator.errors).end();
+            res.status(400).send({
+                success: false,
+                errors: validator.errors
+            }).end();
             return;
         }
 
